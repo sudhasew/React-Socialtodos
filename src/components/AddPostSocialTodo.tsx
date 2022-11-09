@@ -30,6 +30,14 @@ export default class AddPostSocialTodo extends React.Component {
         console.log(res.data);
       })
       .catch((err) => console.log("api Erorr: ", err.response));
+
+    this.setState({
+      title: "",
+      description: "",
+      due_date: "",
+      completed: "",
+      user_id: "",
+    });
   };
 
   render() {

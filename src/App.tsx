@@ -1,5 +1,4 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import { SocialTodoList } from "./components/SocialTodoList";
 import UpdateSocialTodo from "./components/UpdateSocialTodo";
