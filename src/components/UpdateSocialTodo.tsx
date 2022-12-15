@@ -8,7 +8,6 @@ export default class UpdateSocialTodo extends React.Component {
     description: "",
     due_date: "",
     completed: "",
-    user_id: "",
   };
 
   handleChange = (event: any) => {
@@ -20,7 +19,7 @@ export default class UpdateSocialTodo extends React.Component {
   handleSubmit = (event: any) => {
     event.preventDefault();
     axios
-      .put("http://localhost:3004/socialtodos-todo/" + this.state.id, {
+      .put("http://localhost:3004/socialtodo/" + this.state.id, {
         title: this.state.title,
         description: this.state.description,
         due_date: this.state.due_date,
@@ -30,6 +29,13 @@ export default class UpdateSocialTodo extends React.Component {
         console.log(res.data);
       })
       .catch((err) => console.log("api Erorr: ", err.response));
+
+    this.setState({
+      title: "",
+      description: "",
+      due_date: "",
+      completed: "",
+    });
   };
 
   render() {

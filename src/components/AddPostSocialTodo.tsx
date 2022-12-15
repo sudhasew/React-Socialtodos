@@ -7,8 +7,16 @@ export default class AddPostSocialTodo extends React.Component {
     description: "",
     due_date: "",
     completed: "",
-    user_id: "",
   };
+
+  // handleChange = (event: any) => {
+  //   this.setState({
+  //     ...this.state,
+  //     ...{ [event.target.name]: event.target.value },
+  //   });
+  // };
+
+  //  OR
 
   handleChange = (event: any) => {
     this.setState({
@@ -18,16 +26,20 @@ export default class AddPostSocialTodo extends React.Component {
 
   handleSubmit = (event: any) => {
     event.preventDefault();
+
+    console.log("title", this.state.title);
+    console.log("description", this.state.description);
+    console.log("due_date", this.state.due_date);
+    console.log("completed", this.state.completed);
     axios
-      .post("http://localhost:3004/socialtodos-todo", {
+      .post("http://localhost:3004/socialtodo/", {
         title: this.state.title,
         description: this.state.description,
         due_date: this.state.due_date,
         completed: this.state.completed,
-        user_id: this.state.user_id,
       })
       .then((res) => {
-        console.log(res.data);
+        console.log("data here", res.data);
       })
       .catch((err) => console.log("api Erorr: ", err.response));
 
@@ -36,7 +48,6 @@ export default class AddPostSocialTodo extends React.Component {
       description: "",
       due_date: "",
       completed: "",
-      user_id: "",
     });
   };
 
@@ -87,17 +98,9 @@ export default class AddPostSocialTodo extends React.Component {
             />
           </label>
           <br />
-          <label>
-            User Id:
-            <input
-              type="text"
-              name="user_id"
-              value={this.state.user_id}
-              onChange={this.handleChange}
-            />
-          </label>
+
           <div>
-            <button type="submit">Add Post</button>
+            <button>Add Post</button>
           </div>
         </form>
       </div>

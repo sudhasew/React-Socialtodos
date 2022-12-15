@@ -4,6 +4,7 @@ import { GetAllSocialtodo } from "../services/api";
 
 export function SocialTodoList() {
   const [socialtoDolist, setSocialToDoList] = useState<any[]>([]);
+
   useEffect(() => {
     GetAllSocialtodo().then((data: any) => {
       setSocialToDoList(data);
@@ -11,9 +12,9 @@ export function SocialTodoList() {
   }, []);
 
   function deleteSocialTodo(id: number) {
-    console.log("deleting id", id);
+    window.alert(`Are you sure to delete this id ${id}`);
     axios
-      .delete(`http://localhost:3004/socialtodos-todo/${id}`)
+      .delete(`http://localhost:3004/socialtodo/${id}`)
       .then((res) => console.log(res));
   }
 
@@ -39,10 +40,6 @@ export function SocialTodoList() {
               <h2>
                 Copmleted:
                 <span> {toDo.completed.toString()} </span>
-              </h2>
-              <h2>
-                User Id:
-                <span> {toDo.user_id} </span>
               </h2>
               <h2>
                 Delete Socialtodo Post:
